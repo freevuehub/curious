@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>주먹밥</title>
+
+  <link rel="stylesheet" href="../default.css">
+
+  <style>
+    .container {
+      height: 100%;
+      display: flex;
+    }
+
+    .container img {
+      display: block;
+      width: 100%;
+      transform-origin: center;
+    }
+
+    .container .bowl {
+      width: 200px;
+      margin: auto;
+      position: relative;
+      transform-origin: center;
+      animation: rotate 3s 1s infinite;
+    }
+
+    .container .bowl img.bowl1 {
+      transform: rotate(180deg);
+      margin-bottom: 180px;
+    }
+
+    .container .bowl .rice {
+      z-index: -1;
+      position: absolute;
+      width: 160px;
+      margin: auto;
+      left: 50%;
+      top: 210px;
+      transform: translateX(-50%);
+      animation: up_down 3s 1.75s infinite;
+    }
+
+    @keyframes rotate {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      25%,
+      50% {
+        transform: rotate(180deg);
+      }
+
+      75%,
+      100% {
+        transform: rotate(0deg);
+      }
+    }
+
+    @keyframes up_down {
+      0% {
+        top: 210px;
+      }
+
+      25%,
+      50% {
+        top: 20px;
+      }
+
+      75%,
+      100% {
+        top: 210px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <div class="container">
+      <div class="bowl">
+        <img src="./bowl.png" alt="" class="bowl1">
+        <img src="./bowl.png" alt="" class="bowl2">
+        <div class="rice">
+          <img src="./rice.png" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
