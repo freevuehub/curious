@@ -101,32 +101,46 @@
         </div>
       </div>
       <h1 class="title">
-        <span class="title1">회전</span>
-        <span class="title2">초밥</span>
+        <span class="title1">회</span>
+        <span class="title2">전</span>
+        <span class="title3">초</span>
+        <span class="title4">밥</span>
       </h1>
     </div>
   </div>
 
   <script>
-    const randomNumber = () => {
-      return Math.floor(Math.random() * 255)
-    }
-    const domSelector = (className) => {
-      return document.querySelector(className)
-    }
-    const randomColor = () => {
-      const r = randomNumber()
-      const g = randomNumber()
-      const b = randomNumber()
+    class Selector {
+      constructor(..._) {
+        this.nameList = _
+      }
 
-      return `rgb(${r}, ${g}, ${b})`
+      get $() {
+        return this.nameList.map((className) => document.querySelector(className))
+      }
     }
-    const changeColor = () => {
-      domSelector('.title1').style.color = randomColor()
-      domSelector('.title2').style.color = randomColor()
+    class ChangeColor extends Selector {
+      get randomNumber() {
+        return Math.floor(Math.random() * 255)
+      }
+      get randomColor() {
+        return `rgb(${this.randomNumber}, ${this.randomNumber}, ${this.randomNumber})`
+      }
+
+      init() {
+        this.$.forEach((dom) => {
+          dom.style.color = this.randomColor
+
+          setInterval(() => {
+            dom.style.color = this.randomColor
+          }, 1000)
+        })
+      }
     }
 
-    setInterval(changeColor, 1000)
+    const title = new ChangeColor('.title1', '.title2', '.title3', '.title4')
+
+    title.init()
   </script>
 </body>
 
