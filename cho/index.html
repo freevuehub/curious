@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>회전 초밥</title>
+
+  <link rel="stylesheet" href="../default.css">
+
+  <style>
+    .container {
+      height: 100%;
+      display: flex;
+    }
+
+    .rotate {
+      margin: auto;
+      width: 400px;
+      height: 400px;
+      position: relative;
+      animation: rotate 3s infinite linear;
+      transform-origin: center;
+    }
+
+    .rotate .cho {
+      transform-origin: center;
+      position: absolute;
+      width: 100px;
+      animation: rotate 3s infinite reverse linear;
+    }
+
+    .rotate .cho:nth-child(1) {
+      left: 0;
+      top: 50%;
+      margin-top: -50px;
+    }
+
+    .rotate .cho:nth-child(2) {
+      left: 50%;
+      top: 0;
+      margin-left: -50px;
+    }
+
+    .rotate .cho:nth-child(3) {
+      right: 0;
+      top: 50%;
+      margin-top: -50px;
+    }
+
+    .rotate .cho:nth-child(4) {
+      left: 50%;
+      bottom: 0;
+      margin-left: -50px;
+    }
+
+    .rotate .cho img {
+      display: block;
+      width: 100%;
+    }
+
+    .title {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 36px;
+    }
+
+    .title span {
+      transition: color .3s;
+    }
+
+    @keyframes rotate {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <div class="container">
+      <div class="rotate">
+        <div class="cho">
+          <img src="./cho.png" alt="">
+        </div>
+        <div class="cho">
+          <img src="./cho.png" alt="">
+        </div>
+        <div class="cho">
+          <img src="./cho.png" alt="">
+        </div>
+        <div class="cho">
+          <img src="./cho.png" alt="">
+        </div>
+      </div>
+      <h1 class="title">
+        <span class="title1">회전</span>
+        <span class="title2">초밥</span>
+      </h1>
+    </div>
+  </div>
+
+  <script>
+    const randomNumber = () => {
+      return Math.floor(Math.random() * 255)
+    }
+    const domSelector = (className) => {
+      return document.querySelector(className)
+    }
+    const randomColor = () => {
+      const r = randomNumber()
+      const g = randomNumber()
+      const b = randomNumber()
+
+      return `rgb(${r}, ${g}, ${b})`
+    }
+    const changeColor = () => {
+      domSelector('.title1').style.color = randomColor()
+      domSelector('.title2').style.color = randomColor()
+    }
+
+    setInterval(changeColor, 1000)
+  </script>
+</body>
+
+</html>
