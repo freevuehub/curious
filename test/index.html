@@ -7,8 +7,13 @@
 
     <style>
       #app {
-        height: 300vh;
+        height: 100vh;
         padding: 30vw 10vw 0;
+        overflow: auto;
+      }
+
+      .container {
+        height: 300vh;
       }
 
       .fixed {
@@ -42,9 +47,11 @@
   </head>
   <body>
     <div id="app">
-      <div class="fixed">나는 fixed</div>
-      <div class="sticky">나는 sticky</div>
-      <div class="sticky2">나는 sticky + transform</div>
+      <div class="container">
+        <div class="fixed">나는 fixed</div>
+        <div class="sticky">나는 sticky</div>
+        <div class="sticky2">나는 sticky + transform</div>
+      </div>
     </div>
   </body>
 </html>
